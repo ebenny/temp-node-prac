@@ -1,21 +1,17 @@
-// npm - global command comes with node
-// npm --version
+const http = require('http');
 
-// local dependency - use it only in this particular project
-// npm i <packageName>
+// const server = http.createServer((req,res) =>{
+//     console.log('request event');
+//     res.end('Hello Ebenny');
+// });
 
-// global dependency - use it in any project
-// npm install -g <packageName>
-// sudo install -g <packageName> (mac)
+//using Event Emitter API
+const server = http.createServer()
+// emits request event
+// subscribe to it / listen for it / respond to it
 
-// package.json - manifest file(stores important info about project/package)
-// npm init (step by step, press enter to skip)
-// npm init -y (everything default) 
+server.on('request', (req, res) =>{
+    res.end('Welcome');
+});
 
-
-
-const _= require('loadash');
-
-const items  = [1, [2, [3,[4]]]];
-const newItems = _.flattenDeep(items);
-console.log(newItems);
+server.listen(5000);
